@@ -1,0 +1,4 @@
+_db_data/*
+!_db_data/.gitignore
+.vscode
+.env
