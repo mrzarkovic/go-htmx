@@ -25,8 +25,6 @@ func GetTodos() ([]Todo, error) {
 		return todos, err
 	}
 
-	defer db.Close()
-
 	for rows.Next() {
 		todo := Todo{}
 		err := rows.Scan(&todo.Id, &todo.Title, &todo.Done)

@@ -3,10 +3,19 @@ package main
 import (
 	"fmt"
 	"fullstack/model"
+	"log"
 	"net/http"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load(".env")
+  
+	if err != nil {
+	  log.Fatalf("Error loading .env file")
+	}
+
 	model.InitDB()
 
 	fmt.Println("Starting server on port 8080")
@@ -20,7 +29,7 @@ func main() {
 		if (err != nil) {
 			fmt.Fprintf(w, "Error getting todos: %v\n", err)
 		}
-		
+
 		fmt.Fprintf(w, "%v\n", todos)
 	})
 
